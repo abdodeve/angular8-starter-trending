@@ -7,6 +7,10 @@ import { HttpClientModule } from '@angular/common/http' ;
 
 
 import { AppComponent } from './app.component';
+import { RepoListComponent } from './repo-list/repo-list.component';
+import { RepoListService } from './repo-list/services/repo-list.service';
+import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   imports: [
@@ -14,12 +18,18 @@ import { AppComponent } from './app.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot([])
+    RouterModule.forRoot([
+      { path: '', component: RepoListComponent },
+    ])
   ],
   declarations: [
     AppComponent,
+    RepoListComponent,
+    FooterComponent,
+    HeaderComponent
   ],
   bootstrap: [ AppComponent ],
+  providers: [RepoListService]
 })
 export class AppModule { }
 
