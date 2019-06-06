@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
+import { UtilsService } from '../../utils/utils.service';
 
 import { Injectable } from '@angular/core';
 
@@ -13,7 +14,8 @@ const httpOptions = {
 @Injectable()
 export class RepoListService {
 
-  constructor( private http: HttpClient ) { }
+  constructor( private http: HttpClient,
+               private utilsService: UtilsService ) { }
 
 
   /**
@@ -23,7 +25,8 @@ export class RepoListService {
    */
   fetch(): Observable <any> {
 
-    const url             = `${environment.api}/search/repositories?q=created:>2017-10-22&sort=stars&order=desc` ;
+    // this.getDateOfLastMonth();
+    const url             = `${environment.api}/search/repositories?q=created:>${this.utilsService.getDateOfLastMonth()}&sort=stars&order=desc` ;
     const httpOptions = {
                           headers: new HttpHeaders({
                             'Accept'        : 'application/json',
@@ -32,5 +35,7 @@ export class RepoListService {
                         };
     return this.http.get<any>(url, httpOptions) ;
   }
+
+
 
 }
