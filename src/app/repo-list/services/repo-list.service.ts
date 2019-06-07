@@ -19,13 +19,12 @@ export class RepoListService {
 
 
   /**
-   * Get Proprietaire
+   * Get Repos
    * 
    * @returns array repos
    */
   fetch(): Observable <any> {
 
-    // this.getDateOfLastMonth();
     const url             = `${environment.api}/search/repositories?q=created:>${this.utilsService.getDateOfLastMonth()}&sort=stars&order=desc` ;
     const httpOptions = {
                           headers: new HttpHeaders({

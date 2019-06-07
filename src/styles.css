@@ -89,3 +89,7 @@ color: gold ;
 .fa-bug {
 color: #00c851 ;
 }
+
+.title-link {
+  color: inherit ;
+}

@@ -30,4 +30,39 @@ export class UtilsService {
     return formatted_date ;
   }
 
+  /**
+   * Abbreviate Number
+   * 
+   * Convert long number to an abbreviation number
+   * eg. 1000 to 1k
+   * 
+   * @returns string date
+   */
+  abbreviateNumber(x) {
+    if(isNaN(x)) return x;
+  
+    if(x < 999) {
+      return x;
+    }
+  
+    if(x < 1000000) {
+      return Math.round(x/1000) + "K";
+    }
+
+    if( x < 10000000) {
+      return (x/1000000).toFixed(2) + "M";
+    }
+  
+    if(x < 1000000000) {
+      return Math.round((x/1000000)) + "M";
+    }
+  
+    if(x < 1000000000000) {
+      return Math.round((x/1000000000)) + "B";
+    }
+  
+    return "1T+";
+  }
+  
+
 }
