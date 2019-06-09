@@ -2,14 +2,11 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
-import { environment } from '../../../environments/environment';
-import { UtilsService } from '../../utils/utils.service';
+import { environment } from '../../../../environments/environment';
+import { Repo } from '../../repo';
+import { UtilsService } from '../../../utils/utils.service';
 
 import { Injectable } from '@angular/core';
-
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
 
 @Injectable()
 export class RepoListService {
@@ -19,13 +16,14 @@ export class RepoListService {
 
 
   /**
-   * Get Repos
-   * 
-   * @returns array repos
+   * Fetch Repos
+   * Consume Github's API: Search
+   * GET /search/repositories
+   * @returns Observable
    */
-  fetch(): Observable <any> {
-
-    const url             = `${environment.api}/search/repositories?q=created:>${this.utilsService.getDateOfLastMonth()}&sort=stars&order=desc` ;
+  fetch( page: number = null ): Observable <any> {
+    const pageNumber = page ? `&page=${page}` : '' ; 
+    const url             = `${environment.api}/search/repositories?q=created:>${this.utilsService.getDateOfLastMonth()}&sort=stars&order=desc${pageNumber}` ;
     const httpOptions = {
                           headers: new HttpHeaders({
                             'Accept'        : 'application/json',
@@ -34,7 +32,5 @@ export class RepoListService {
                         };
     return this.http.get<any>(url, httpOptions) ;
   }
-
-
 
 }

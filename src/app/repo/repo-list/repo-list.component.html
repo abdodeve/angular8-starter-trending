@@ -1,8 +1,8 @@
 
     <!--Main layout-->
     <main class="main-layout">
-        <div class="container">
-    
+        <div class="container section-repo">
+
           <!--Section: Main info-->
           <section class="mt-5 wow fadeIn" *ngFor="let repository of repositories">
     
@@ -27,9 +27,9 @@
                 <p> {{ repository.description }} </p>
                 <!-- Main heading -->
     
-                <hr>
+                <hr/>
                 <p>
-                    Submitted {{ lastSubmit(repository.pushed_at) }} days ago by {{ repository.owner.login | titlecase }}.
+                    Submitted {{ lastSubmit(repository.pushed_at) }} by {{ repository.owner.login | titlecase }}.
                 </p>
                 <!-- CTA -->
                 <a target="_blank" href="{{ repository.html_url }}/stargazers" class="btn btn-indigo btn-md border-radius-30">
@@ -48,8 +48,15 @@
     
           </section>
           <!--Section: Main info-->
-    
+
+          <div class="row spinner-github-row" #octoCatSpinner>
+            <div class="col-md-4 offset-md-4">
+             <img src="../../assets/img/octocat-spinner-128.gif" class="img-fluid img-thumbnail mx-auto d-block github-spinner" alt="">
+            </div>
+          </div>
+          
+
         </div>
       </main>
       <!--Main layout-->
-    
+

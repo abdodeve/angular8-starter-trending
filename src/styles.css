@@ -93,3 +93,11 @@ color: #00c851 ;
 .title-link {
   color: inherit ;
 }
+
+.spinner-github-row {
+  display: none;
+}
+
+.github-spinner {
+  max-width: 30%;
+}
