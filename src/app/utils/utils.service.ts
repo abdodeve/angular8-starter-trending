@@ -8,11 +8,11 @@ export class UtilsService {
   constructor() { }
 
   /**
-   * Get Date Of LastMonth
+   * Get Date Of previous month
    * 
    * @returns string date
    */
-  getDateOfLastMonth() {
+  getDateOfPreviousMonth() {
     // date before one month
     let dateBeforeMonth = new Date() ;
     dateBeforeMonth.setDate( new Date().getDate() - 30 ) ;
@@ -25,7 +25,7 @@ export class UtilsService {
     get_date  = Number(get_date) < 10 ? '0'+get_date : get_date ;
     get_month = Number(get_month) < 10 ? '0'+get_month : get_month ;
 
-    const formatted_date = get_year + "-" + get_month + "-" + get_date ;
+    const formatted_date = `${get_year}-${get_month}-${get_date}` ;
 
     return formatted_date ;
   }

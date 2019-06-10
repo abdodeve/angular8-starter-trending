@@ -23,7 +23,7 @@ export class RepoListService {
    */
   fetch( page: number = null ): Observable <any> {
     const pageNumber = page ? `&page=${page}` : '' ; 
-    const url             = `${environment.api}/search/repositories?q=created:>${this.utilsService.getDateOfLastMonth()}&sort=stars&order=desc${pageNumber}` ;
+    const url             = `${environment.api}/search/repositories?q=created:>${this.utilsService.getDateOfPreviousMonth()}&sort=stars&order=desc${pageNumber}` ;
     const httpOptions = {
                           headers: new HttpHeaders({
                             'Accept'        : 'application/json',
