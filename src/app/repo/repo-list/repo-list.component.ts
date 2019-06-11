@@ -74,7 +74,10 @@ export class RepoListComponent implements OnInit, AfterViewInit {
       lastSubmit( pushed_at ){
         const lastSubmittedDate: any = moment( new Date( pushed_at ) ) ; // Convert pushed_at to date 
         const dateNow: any = moment( new Date() ) ;
-        const last_submit_by_days: Number = dateNow.diff( lastSubmittedDate, 'days' );
+        const last_submit_by_days: number = dateNow.diff( lastSubmittedDate, 'days' );
+
+        if( isNaN( last_submit_by_days ) )
+          return "" ;
 
         if( last_submit_by_days < 1 )
           return "less than one day" ;
