@@ -14,7 +14,7 @@ export class RepoListComponent implements OnInit, AfterViewInit {
 
   @ViewChild('octoCatSpinner',  {static: false}) octoCatSpinner: ElementRef;
   repositories: Array<Repo> = new Array<Repo>() ;
-  page: number = 0 ;
+  page: number = 1 ;
   isOnload: boolean = false ;
 
   constructor( private repoListService: RepoListService,
@@ -53,6 +53,7 @@ export class RepoListComponent implements OnInit, AfterViewInit {
 
           this.isOnload = true ;
           this.page++ ;
+          console.log(this.page);
 
           this.octoCatSpinner.nativeElement.style.display = "block" ; // Show spinner
           // Fetch repos form server

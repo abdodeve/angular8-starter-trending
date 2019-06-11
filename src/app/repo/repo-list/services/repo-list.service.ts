@@ -21,7 +21,7 @@ export class RepoListService {
    * GET /search/repositories
    * @returns Observable
    */
-  fetch( page: number = null ): Observable <any> {
+  fetch( page: number ): Observable <any> {
     const pageNumber = page ? `&page=${page}` : '' ; 
     const url             = `${environment.api}/search/repositories?q=created:>${this.utilsService.getDateOfPreviousMonth()}&sort=stars&order=desc${pageNumber}` ;
     const httpOptions = {
