@@ -27,8 +27,6 @@ export class RepoListComponent implements OnInit, AfterViewInit {
       this.repositories = [ ...this.repositories, ...res.items ] ;
       this.isOnload = false ;
     });
-
-  
   }
 
   ngAfterViewInit() {
@@ -46,14 +44,11 @@ export class RepoListComponent implements OnInit, AfterViewInit {
         let max = document.documentElement.scrollHeight - 1 ; // Get document height
 
         // If the user don't reach the end yet or data is Onload then return
-        if( pos <= max || this.isOnload ) {
-          console.log('pos < max', {pos, max}, this.isOnload);
+        if( pos <= max || this.isOnload )
           return ;
-        }
 
           this.isOnload = true ;
           this.page++ ;
-          console.log(this.page);
 
           this.octoCatSpinner.nativeElement.style.display = "block" ; // Show spinner
           // Fetch repos form server
@@ -70,9 +65,10 @@ export class RepoListComponent implements OnInit, AfterViewInit {
      * Show the time of the last submit
      * This methode used in ( repo-list.component.html )
      * 
+     * @param pushed_at - pushed_at date from github response
      * @returns String
      */
-      lastSubmit( pushed_at ){
+      lastSubmit( pushed_at: any ){
         const lastSubmittedDate: any = moment( new Date( pushed_at ) ) ; // Convert pushed_at to date 
         const dateNow: any = moment( new Date() ) ;
         const last_submit_by_days: number = dateNow.diff( lastSubmittedDate, 'days' );

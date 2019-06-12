@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment';
-import { Repo } from '../../repo';
 import { UtilsService } from '../../../utils/utils.service';
 
 import { Injectable } from '@angular/core';
@@ -19,6 +18,8 @@ export class RepoListService {
    * Fetch Repos
    * Consume Github's API: Search
    * GET /search/repositories
+   * 
+   * @param page - page number for pagination
    * @returns Observable
    */
   fetch( page: number ): Observable <any> {

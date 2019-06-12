@@ -10,16 +10,16 @@ export class UtilsService {
   /**
    * Get Date Of previous month
    * 
-   * @returns string date
+   * @returns string formatted_date
    */
   getDateOfPreviousMonth() {
     // date before one month
     let dateBeforeMonth = new Date() ;
-    dateBeforeMonth.setDate( new Date().getDate() - 30 ) ;
+    dateBeforeMonth.setDate( new Date().getDate() - 30 ) ; // Set dateNow to the date before 30 days
 
-    let get_date = dateBeforeMonth.getDate().toString();
-    let get_month = (dateBeforeMonth.getMonth() + 1).toString();
-    let get_year = dateBeforeMonth.getFullYear();
+    let get_date = dateBeforeMonth.getDate().toString(); // get days
+    let get_month = (dateBeforeMonth.getMonth() + 1).toString(); // get months
+    let get_year = dateBeforeMonth.getFullYear(); // get years
 
     // Switch numbers under 10 to two digits
     get_date  = Number(get_date) < 10 ? '0'+get_date : get_date ;
@@ -36,29 +36,30 @@ export class UtilsService {
    * Convert long number to an abbreviation number
    * eg. 1000 to 1k
    * 
-   * @returns string date
+   * @param x - Number to abbreviate
+   * @returns string abbreviatedNumber
    */
-  abbreviateNumber(x) {
-    if(isNaN(x)) return x;
+  abbreviateNumber( nb: number ) {
+    if( isNaN(nb) ) return nb;
   
-    if(x < 999) {
-      return x;
+    if( nb < 999 ) {
+      return nb;
     }
   
-    if(x < 1000000) {
-      return Math.round(x/1000) + "K";
+    if( nb < 1000000 ) {
+      return Math.round(nb/1000) + "K";
     }
 
-    if( x < 10000000) {
-      return (x/1000000).toFixed(2) + "M";
+    if( nb < 10000000 ) {
+      return (nb/1000000).toFixed(2) + "M";
     }
   
-    if(x < 1000000000) {
-      return Math.round((x/1000000)) + "M";
+    if( nb < 1000000000 ) {
+      return Math.round((nb/1000000)) + "M";
     }
   
-    if(x < 1000000000000) {
-      return Math.round((x/1000000000)) + "B";
+    if( nb < 1000000000000 ) {
+      return Math.round((nb/1000000000)) + "B";
     }
   
     return "1T+";
