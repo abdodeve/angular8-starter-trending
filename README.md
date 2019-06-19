@@ -1,12 +1,13 @@
 
 
-# Trending Repositories
+# Starter Angular | Trending Repositories
 
-A webapp based on **Angular 8** that list the most starred Github repos that were created in the last 30 days.
+A starter app based on **Angular 8** that list the most starred Github repos that were created in the last 30 days.
 This source has already been madded with the implementation of angular best practices.
 
+Demo url: [Trending Repositories](http://trending-repos.abdelhadidev.tk)
 
-Features :
+Features:
 - Infinite scroll
 - Loading bar
 - Custom spinner
@@ -17,7 +18,7 @@ Features :
 - Bootstrap4/MDBootstrap/jQuery/FontAwesome integrated
 
 
-What you can do with this repo :
+What you can do with this repo:
 - As starter project.
 - Hackathon project.
 - For SPA application that consume some rest api for quick demo.
